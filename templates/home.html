@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Suggestion</title>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <h1>Find Your Phone</h1>
+    <form method="POST">
+        <label for="ram">Give the required RAM</label>
+        <select name="ram" id="ram">
+            <option value="" selected disabled>Select Your RAM</option>
+            <option value="2">2GB</option>
+            <option value="3">3GB</option>
+            <option value="4">4GB</option>
+            <option value="6">6GB</option>
+            <option value="8">8GB</option>
+            <option value="12">12GB</option>
+        </select><br><br>
+
+        <label for="storage">Select the required storage</label>
+        <select name="storage" id="storage">
+            <option value="" selected disabled>Select Your Storage</option>
+            <option value="32">32GB</option>
+            <option value="64">64GB</option>
+            <option value="128">128GB</option>
+            <option value="256">256GB</option>
+            <option value="512">512GB</option>
+        </select><br><br>
+
+        <label for="camera">Select Your Camera (Primary Camera)</label>
+        <select name="camera" id="camera">
+            <option value="" selected disabled>Select Your Camera</option>
+            <option value="12">12MP</option>
+            <option value="12.2">12.2MP</option>
+            <option value="13">13MP</option>
+            <option value="16">16MP</option>
+            <option value="48">48MP</option>
+            <option value="50">50MP</option>
+            <option value="64">64MP</option>
+            <option value="108">108MP</option>
+        </select><br><br>
+
+        <label for="battery">Select Your Battery size (mAh)</label>
+        <input type="text" id="battery" name="battery"><br><br>
+
+        <label for="lower_price_range">Select Your Lower Price Range</label>
+        <input type="text" id="lower_price_range" name="lower_price_range"><br><br>
+
+        <label for="higher_price_range">Select Your Higher Price Range</label>
+        <input type="text" id="higher_price_range" name="higher_price_range"><br><br>
+
+        <input type="submit" id="submit_button" name="submit_button" value="Find your Phone">
+    </form>
+    <div>
+        <div class="phone-container">
+            {% if suggestion %}
+            <h2>Nearest Match: </h2>
+            <div class="main-phone">
+                <h2>{{ suggestion[0] }}</h2>
+                <h3>{{ suggestion[1] }}</h3>
+                <p>Storage: {{ suggestion[2] }}</p>
+                <p>RAM: {{ suggestion[3] }}</p>
+                <p>Camera: {{ suggestion[5] }}</p>
+                <p>Battery: {{ suggestion[6] }}mAh</p>
+                <h4>{{ suggestion[7] }}</h4>
+            </div>
+            {% else %}
+            <h3 style="text-align: center;">No exact match found with your Description</h3>
+            {% endif %}
+
+            {% if recommendation %}
+            <h2>Other Recommendations: </h2>
+            <div class="phone-list">
+                {% for phone in recommendation %}
+                <div class="phone-item">
+                    <h2>{{ phone['Brand'] }}</h2>
+                    <h3>{{ phone['Model'] }}</h3>
+                    <p>Primary Camera: {{ phone['Primary Camera (MP)']|int }}MP</p>
+                    <p>Secondary Camera: {{ phone['Secondary Camera (MP)'] }}</p>
+                    <p>Battery: {{ phone['Battery Capacity (mAh)'] }}mAh</p>
+                    <p>RAM: {{ phone['RAM (GB)'] }}GB</p>
+                    <p>Storage: {{ phone['Storage (GB)'] }}GB</p>
+                    <h4>₹{{ phone['Price (Rs)'] }}</h4>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <!--Dark mode to light mode and viceversa -->
+    <div class="mode_changer">
+        <button id="mode_switch" class="mode_button">Change Mode</button>
+    </div>
+
+    <!-- Link to JavaScript file, moved to the bottom -->
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+/* Basic form styling */
+form {
+  background-color: #f0f8ff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 50px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  font-weight: bold;
+  color: #333;
+}
+
+select,
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 20px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#submit_button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#submit_button:hover {
+  background-color: #45a049;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+/* Dark Mode Switch */
+.mode_changer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.mode_button {
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mode_button:hover {
+  background-color: #555;
+}
+
+.main-phone {
+  line-height: 10px;
+  text-align: center;
+}
+
+.phone-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.phone-item {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  text-align: center;
+}
