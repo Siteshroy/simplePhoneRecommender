@@ -1,11 +1,11 @@
 const modeSwitch = document.getElementById("mode_switch");
 
-// Add event listener to the button
-modeSwitch.addEventListener("click", function() {
-    document.body.classList.toggle("dark_mode");
-    if (document.body.classList.contains("dark_mode")) {
-        modeSwitch.textContent = "Switch to Light Mode";
-    } else {
-        modeSwitch.textContent = "Switch to Dark Mode";
-    }
-});
+const ToggleMode = () => {
+  document.body.classList.toggle("dark-mode");
+  var modeIcon = modeSwitch.childNodes[0];
+  modeIcon.classList.contains("fa-moon")
+    ? modeIcon.classList.replace("fa-moon", "fa-sun")
+    : modeIcon.classList.replace("fa-sun", "fa-moon");
+};
+
+modeSwitch.addEventListener("click", ToggleMode);
